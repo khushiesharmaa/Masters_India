@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TaxClarity AI — Prototype</title>
+<style>
+:root{--navy:#152743;--blue:#4169e1;--pale:#f3f6fb;--ink:#172033;--muted:#68758a;--green:#17845b;--amber:#a9670a;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:var(--navy);color:white;padding:20px max(22px,calc((100% - 1100px)/2));display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-weight:800;letter-spacing:.2px;font-size:20px}.brand span{color:#9fc0ff}.tag{font-size:12px;background:#ffffff1c;border:1px solid #ffffff35;padding:5px 9px;border-radius:30px}
+main{max-width:1100px;margin:28px auto;padding:0 18px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}.eyebrow{color:var(--blue);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1.2px}
+h1{font-size:30px;line-height:1.15;margin:7px 0 10px;color:var(--navy)}p{margin:5px 0;color:var(--muted)}.progress{min-width:180px;background:white;border:1px solid var(--line);padding:14px;border-radius:14px}.bar{height:7px;background:#e9eef8;border-radius:8px;margin-top:9px;overflow:hidden}.bar div{height:100%;width:40%;background:var(--blue);transition:width .25s}
+.grid{display:grid;grid-template-columns:1.25fr .85fr;gap:18px}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 18px #1a2b4b08}.panel h2{font-size:17px;margin:0 0 13px;color:var(--navy)}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.item{display:flex;gap:11px;align-items:flex-start}.check{width:22px;height:22px;border:1.5px solid #bac5d5;border-radius:6px;flex-shrink:0;display:grid;place-items:center;color:white;font-size:14px;margin-top:1px}.check.done{background:var(--green);border-color:var(--green)}.item strong{display:block}.sub{font-size:12px;color:var(--muted);margin-top:2px}.pill{font-size:11px;font-weight:700;padding:4px 8px;border-radius:30px;white-space:nowrap}.needed{background:#fff2d9;color:var(--amber)}.ready{background:#e1f6ed;color:var(--green)}.button{border:0;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer;font-size:13px}.primary{background:var(--blue);color:white}.secondary{background:#edf2ff;color:#2d4eb3}.outline{background:white;border:1px solid var(--line);color:var(--navy)}button:focus{outline:3px solid #9fc0ff}.ai{background:#f5f7ff;border:1px solid #dce4ff;border-radius:12px;padding:14px;margin:12px 0}.ai h3{margin:0 0 6px;font-size:14px;color:#2d4eb3}.ai p{font-size:13px;color:#3e4b64}.small{font-size:12px}.status{margin-top:13px;padding:11px;border-radius:9px;background:#eef8f3;color:#176b4b;display:none}.status.show{display:block}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.metric{background:var(--pale);padding:12px;border-radius:10px}.metric b{font-size:21px;color:var(--navy);display:block}.metric span{font-size:11px;color:var(--muted)}footer{max-width:1100px;margin:20px auto 35px;padding:0 18px;color:#788398;font-size:11px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{display:block}.progress{margin-top:15px}.metricgrid{grid-template-columns:1fr 1fr 1fr}h1{font-size:26px}header{padding:17px 20px}}
+</style>
+</head>
+<body>
+<header><div class="brand">Tax<span>Clarity</span> AI</div><div class="tag">Interactive concept prototype · Demo data only</div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">Tax preparation, made clearer</div><h1>Your tax return, one clear step at a time.</h1><p>For salaried taxpayers who want to know what’s missing, why it matters, and what to do next.</p></div>
+<div class="progress"><strong id="progressText">2 of 5 items ready</strong><div class="bar"><div id="progressBar"></div></div><div class="small" style="margin-top:7px;color:#68758a">Illustrative readiness, not a tax calculation</div></div></section>
+<div class="grid">
+<section class="panel"><h2>Preparation checklist</h2>
+<div class="row" data-item="0"><div class="item"><div class="check done">✓</div><div><strong>Identity and profile</strong><div class="sub">Basic taxpayer details</div></div></div><span class="pill ready">Ready</span></div>
+<div class="row" data-item="1"><div class="item"><div class="check done">✓</div><div><strong>Salary information</strong><div class="sub">Review your Form 16 / salary statement</div></div></div><span class="pill ready">Ready</span></div>
+<div class="row" data-item="2"><div class="item"><div class="check">3</div><div><strong>Interest income</strong><div class="sub">Check bank interest and relevant statements</div></div></div><span class="pill needed">Review needed</span></div>
+<div class="row" data-item="3"><div class="item"><div class="check">4</div><div><strong>Deductions and proofs</strong><div class="sub">Add only claims you can substantiate</div></div></div><span class="pill needed">Review needed</span></div>
+<div class="row" data-item="4"><div class="item"><div class="check">5</div><div><strong>Final review</strong><div class="sub">Confirm details before filing</div></div></div><span class="pill needed">Not started</span></div>
+<div class="actions"><button class="button primary" id="reviewBtn">Review next item</button><button class="button outline" id="resetBtn">Reset demo</button></div>
+<div id="status" class="status" role="status"></div></section>
+<aside class="panel"><h2>AI guide</h2><p class="small">A proposed explanation layer—not a tax authority or filing engine.</p>
+<div class="ai"><h3 id="aiTitle">Why check interest income?</h3><p id="aiText">Bank interest may need to be considered in your tax return even if it is not part of your salary. Compare your bank statements with the information available in your tax records.</p></div>
+<strong style="font-size:13px">What would you like to do?</strong>
+<div class="actions"><button class="button secondary" id="whyBtn">Explain simply</button><button class="button secondary" id="stepsBtn">Show next steps</button></div>
+<div class="ai" style="background:#fffaf0;border-color:#f5dfb8"><h3 style="color:#8a5a0a">Human verification</h3><p>AI suggestions are labelled as suggestions. The user confirms documents and claims; uncertain cases are escalated rather than auto-filed.</p></div>
+<button class="button primary" style="width:100%" id="completeBtn">Mark item reviewed</button>
+<div id="sideStatus" class="status" role="status"></div>
+<div class="metricgrid"><div class="metric"><b id="mReady">2/5</b><span>Items ready</span></div><div class="metric"><b>1</b><span>AI suggestion</span></div><div class="metric"><b>0</b><span>Returns filed</span></div></div>
+</aside></div>
+</main>
+<footer>Concept only. No personal data is collected or transmitted. Tax rules, eligibility, calculations, and filing must be verified against current official guidance and qualified review.</footer>
+<script>
+const items=[{title:"Identity and profile",text:"Your basic profile is marked ready in this demo. Confirm every detail against your official records before filing."},{title:"Salary information",text:"Compare your salary details with Form 16 and the relevant tax information statement. Resolve differences before moving on."},{title:"Interest income",text:"Bank interest may need to be considered in your tax return even if it is not part of your salary. Compare your bank statements with the information available in your tax records."},{title:"Deductions and proofs",text:"Review each deduction you intend to claim and keep supporting evidence. Do not claim a deduction solely because an AI suggestion mentions it."},{title:"Final review",text:"Review names, income, deductions, bank details, and the selected tax regime. Submit only after you are satisfied the information is accurate."}];
+let done=new Set([0,1]), current=2, mode="why";
+const $=id=>document.getElementById(id);
+function render(){document.querySelectorAll("[data-item]").forEach(el=>{let i=+el.dataset.item, ok=done.has(i);el.querySelector(".check").classList.toggle("done",ok);el.querySelector(".check").textContent=ok?"✓":String(i+1);el.querySelector(".pill").className="pill "+(ok?"ready":"needed");el.querySelector(".pill").textContent=ok?"Ready":(i===4?"Not started":"Review needed")});$("progressText").textContent=`${done.size} of 5 items ready`;$("progressBar").style.width=(done.size/5*100)+"%";$("mReady").textContent=done.size+"/5";current=[0,1,2,3,4].find(i=>!done.has(i));if(current===undefined)current=4;showAI()}
+function showAI(){let it=items[current];$("aiTitle").textContent=mode==="steps"?"Next steps: "+it.title:"Why review "+it.title.toLowerCase()+"?";$("aiText").textContent=mode==="steps"?(current===2?"1. Open your bank statements. 2. Compare interest with available tax records. 3. Resolve mismatches or ask a qualified tax professional.":current===3?"1. List each intended claim. 2. Match it to current rules and evidence. 3. Exclude unsupported claims.":"1. Check the relevant documents. 2. Resolve discrepancies. 3. Confirm only when accurate."):it.text}
+$("reviewBtn").onclick=()=>{mode="why";showAI();$("status").textContent="Next item selected: "+items[current].title;$("status").classList.add("show")};
+$("whyBtn").onclick=()=>{mode="why";showAI();$("sideStatus").textContent="Plain-language explanation shown.";$("sideStatus").classList.add("show")};
+$("stepsBtn").onclick=()=>{mode="steps";showAI();$("sideStatus").textContent="Actionable checklist shown.";$("sideStatus").classList.add("show")};
+$("completeBtn").onclick=()=>{if(!done.has(current)){done.add(current);$("sideStatus").textContent="Marked reviewed in this local demo. This does not submit or file a return.";render()}else{$("sideStatus").textContent="This item is already marked ready in the demo."} $("sideStatus").classList.add("show")};
+$("resetBtn").onclick=()=>{done=new Set([0,1]);current=2;mode="why";$("status").classList.remove("show");$("sideStatus").classList.remove("show");render()};
+render();
+</script></body></html>
